@@ -22,21 +22,21 @@ import com.epam.shop.repo.mapping.RowMapper;
 
 public abstract class AbstractCRUDRepository<T extends WithId> {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(AbstractCRUDRepository.class);
-	private static final String SELECT_STATEMENT = "SELECT * FROM %s";
-	private static final String DELETE_STATEMENT = "DELETE FROM %s WHERE id = %d";
-	private static final String SELECT_BY_ID_SQL = SELECT_STATEMENT + " WHERE id = %d";
-	private static final String ORDERED_PAGINATED = SELECT_STATEMENT + " ORDER BY %s LIMIT %d OFFSET %d";
+	public static final Logger LOGGER = LoggerFactory.getLogger(AbstractCRUDRepository.class);
+	public static final String SELECT_STATEMENT = "SELECT * FROM %s";
+	public static final String DELETE_STATEMENT = "DELETE FROM %s WHERE id = %d";
+	public static final String SELECT_BY_ID_SQL = SELECT_STATEMENT + " WHERE id = %d";
+	public static final String ORDERED_PAGINATED = SELECT_STATEMENT + " ORDER BY %s LIMIT %d OFFSET %d";
 
-	private static final String INSERT_STATEMENT = "INSERT INTO %s (%s) VALUES (%s)";
-	private static final String UPDATE_STATEMENT = "UPDATE %s SET %s WHERE id = %s";
+	public static final String INSERT_STATEMENT = "INSERT INTO %s (%s) VALUES (%s)";
+	public static final String UPDATE_STATEMENT = "UPDATE %s SET %s WHERE id = %s";
 
-	private RowMapper<T> rs;
+	private RowMapper<T> rm;
 	private String tableName;
 
 	public AbstractCRUDRepository(RowMapper<T> rs, String tableName) {
 		super();
-		this.rs = rs;
+		this.rm = rs;
 		this.tableName = tableName;
 	}
 
@@ -49,7 +49,7 @@ public abstract class AbstractCRUDRepository<T extends WithId> {
 
 			if (resultSet.next()) {
 
-				T entity = rs.toObject(resultSet);
+				T entity = rm.toObject(resultSet);
 				return entity;
 			} else {
 				return null;
@@ -70,7 +70,7 @@ public abstract class AbstractCRUDRepository<T extends WithId> {
 			List<T> entities = new ArrayList<>();
 
 			while (resultSet.next()) {
-				entities.add(rs.toObject(resultSet));
+				entities.add(rm.toObject(resultSet));
 			}
 
 			return entities;
@@ -107,7 +107,7 @@ public abstract class AbstractCRUDRepository<T extends WithId> {
 			List<T> entities = new ArrayList<>();
 
 			while (resultSet.next()) {
-				entities.add(rs.toObject(resultSet));
+				entities.add(rm.toObject(resultSet));
 			}
 
 			return entities;
@@ -191,6 +191,10 @@ public abstract class AbstractCRUDRepository<T extends WithId> {
 			update(person.getId(), updateValues(person));
 			return person;
 		}
+	}
+
+	public RowMapper<T> getRm() {
+		return rm;
 	}
 
 	protected abstract Map<String, String> updateValues(T person);
