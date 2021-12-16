@@ -1,12 +1,16 @@
 package com.epam.shop.domain;
 
-public class Product {
+import java.math.BigDecimal;
+
+import com.epam.shop.repo.WithId;
+
+public class Product implements WithId {
 
 	private Long id;
 	private String name;
 	private String description;
 	private Category category;
-	private Double price;
+	private BigDecimal price;
 
 	public Long getId() {
 		return id;
@@ -40,11 +44,11 @@ public class Product {
 		this.category = category;
 	}
 
-	public Double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

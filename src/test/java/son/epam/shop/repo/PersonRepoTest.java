@@ -5,13 +5,15 @@ import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
+import org.junit.Test;
+
 import com.epam.shop.domain.Person;
 import com.epam.shop.domain.PersonRole;
 import com.epam.shop.repo.PersonRepo;
 
 public class PersonRepoTest {
 
-	// @Test
+	@Test
 	public void testPersonRepoInsertGet() {
 
 		PersonRepo instance = PersonRepo.getInstance();

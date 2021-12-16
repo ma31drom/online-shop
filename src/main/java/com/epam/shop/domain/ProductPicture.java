@@ -1,6 +1,8 @@
 package com.epam.shop.domain;
 
-public class ProductPicture {
+import com.epam.shop.repo.WithId;
+
+public class ProductPicture implements WithId {
 
 	private Long id;
 	private String name;

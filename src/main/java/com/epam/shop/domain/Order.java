@@ -3,13 +3,15 @@ package com.epam.shop.domain;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class Order {
+import com.epam.shop.repo.WithId;
+
+public class Order implements WithId {
 
 	private Long id;
 	private LocalDateTime date;
 	private BigDecimal totalAmount;
 	private OrderStatus status;
-	private Long deliveryAdress;
+	private Long deliveryAdressId;
 	private Long personId;
 
 	public OrderStatus getStatus() {
@@ -44,12 +46,12 @@ public class Order {
 		this.totalAmount = totalAmount;
 	}
 
-	public Long getDeliveryAdress() {
-		return deliveryAdress;
+	public Long getDeliveryAdressId() {
+		return deliveryAdressId;
 	}
 
-	public void setDeliveryAdress(Long deliveryAdress) {
-		this.deliveryAdress = deliveryAdress;
+	public void setDeliveryAdressId(Long deliveryAdressId) {
+		this.deliveryAdressId = deliveryAdressId;
 	}
 
 	public Long getPersonId() {

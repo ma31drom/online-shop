@@ -1,6 +1,8 @@
 package com.epam.shop.domain;
 
-public class CartProduct {
+import com.epam.shop.repo.WithId;
+
+public class CartProduct implements WithId{
 
 	private Long id;
 	private Long quantity;

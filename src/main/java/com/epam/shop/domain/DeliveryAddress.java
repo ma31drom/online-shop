@@ -1,13 +1,15 @@
 package com.epam.shop.domain;
 
-public class DeliveryAddress {
+import com.epam.shop.repo.WithId;
+
+public class DeliveryAddress implements WithId{
 
 	private Long id;
 	private String city;
 	private String street;
 	private String houseNum;
 	private String flatNum;
-	private String personId;
+	private Long personId;
 
 	public Long getId() {
 		return id;
@@ -49,11 +51,11 @@ public class DeliveryAddress {
 		this.flatNum = flatNum;
 	}
 
-	public String getPersonId() {
+	public Long getPersonId() {
 		return personId;
 	}
 
-	public void setPersonId(String personId) {
+	public void setPersonId(Long personId) {
 		this.personId = personId;
 	}
 

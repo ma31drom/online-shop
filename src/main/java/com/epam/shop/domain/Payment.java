@@ -1,9 +1,11 @@
 package com.epam.shop.domain;
 
-public class Payment {
+import com.epam.shop.repo.WithId;
+
+public class Payment implements WithId {
 	private Long id;
 	private PaymentStatus status;
-	private Long orederId;
+	private Long orderId;
 
 	public Long getId() {
 		return id;
@@ -21,12 +23,12 @@ public class Payment {
 		this.status = status;
 	}
 
-	public Long getOrederId() {
-		return orederId;
+	public Long getOrderId() {
+		return orderId;
 	}
 
-	public void setOrederId(Long orederId) {
-		this.orederId = orederId;
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
 	}
 
 }

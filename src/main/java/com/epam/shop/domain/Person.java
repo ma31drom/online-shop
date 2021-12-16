@@ -1,6 +1,8 @@
 package com.epam.shop.domain;
 
-public class Person {
+import com.epam.shop.repo.WithId;
+
+public class Person implements WithId {
 
 	private Long id;
 	private String firstName;

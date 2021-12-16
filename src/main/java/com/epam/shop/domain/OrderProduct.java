@@ -2,7 +2,9 @@ package com.epam.shop.domain;
 
 import java.math.BigDecimal;
 
-public class OrderProduct {
+import com.epam.shop.repo.WithId;
+
+public class OrderProduct implements WithId{
 
 	private Long id;
 	private Long quatity;
