@@ -22,11 +22,7 @@ public class ProductRepo extends AbstractCRUDRepository<Product> {
 	}
 
 	protected Map<String, String> updateValues(Product o) {
-		return Map.of(
-				"name", o.getName(), 
-				"description", o.getDescription(), 
-				"category", String.valueOf(o.getCategory().ordinal()), 
-				"price", o.getPrice().toString()
-				);
+		return Map.of("name", "'" + o.getName() + "'", "description", "'" + o.getDescription() + "'", "category",
+				"'" + String.valueOf(o.getCategory().ordinal()) + "'", "price", o.getPrice().toString());
 	}
 }

@@ -31,8 +31,8 @@ public abstract class AbstractCRUDRepository<T extends WithId> {
 	public static final String INSERT_STATEMENT = "INSERT INTO %s (%s) VALUES (%s)";
 	public static final String UPDATE_STATEMENT = "UPDATE %s SET %s WHERE id = %s";
 
-	private RowMapper<T> rm;
-	private String tableName;
+	protected RowMapper<T> rm;
+	protected String tableName;
 
 	public AbstractCRUDRepository(RowMapper<T> rs, String tableName) {
 		super();
