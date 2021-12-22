@@ -66,25 +66,32 @@ public class ProductService {
 
 	public List<ProductWithImages> getProductsWithImg() {
 		List<Product> findAll = ProductRepo.getInstance().findAll();
-		return findAll.stream().map(product -> {
-
-			List<ProductPicture> pics = ProductPictureRepo.getInstance().findByProductId(product.getId());
-
-			ProductWithImages productWithImages = new ProductWithImages();
-			productWithImages.setId(product.getId());
-			productWithImages.setCategory(product.getCategory());
-			productWithImages.setName(product.getName());
-			productWithImages.setDescription(product.getDescription());
-			productWithImages.setPrice(product.getPrice());
-			productWithImages.setImgs(pics);
-			return productWithImages;
-		}).collect(Collectors.toList());
+		return findAll.stream().map(product -> getWihtPic(product)).collect(Collectors.toList());
 
 	}
 
 	public Product getById(Long id) {
-
 		return ProductRepo.getInstance().getById(id);
+	}
+
+	public ProductWithImages getByIdWithImg(Long valueOf) {
+		Product product = ProductRepo.getInstance().getById(valueOf);
+
+		ProductWithImages productWithImages = getWihtPic(product);
+		return productWithImages;
+	}
+
+	private ProductWithImages getWihtPic(Product product) {
+		List<ProductPicture> pics = ProductPictureRepo.getInstance().findByProductId(product.getId());
+
+		ProductWithImages productWithImages = new ProductWithImages();
+		productWithImages.setId(product.getId());
+		productWithImages.setCategory(product.getCategory());
+		productWithImages.setName(product.getName());
+		productWithImages.setDescription(product.getDescription());
+		productWithImages.setPrice(product.getPrice());
+		productWithImages.setImgs(pics);
+		return productWithImages;
 	}
 
 }

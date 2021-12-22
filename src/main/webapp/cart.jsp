@@ -9,24 +9,16 @@
 				<th>Id</th>
 				<th>Name</th>
 				<th>Category</th>
-				<th>Action</th>
-				<th>Photos</th>
+				<th>Price</th>
 				<th>Upload Photo</th>
 
 			</tr>
-			<c:forEach items="${products}" var="product">
+			<c:forEach items="${cartProducts}" var="product">
 				<tr>
-					<td>${product.id}</td>
+					<td>${product.product_id}</td>
 					<td>${product.name}</td>
 					<td>${product.category}</td>
-					<td><a href="<c:url value="/editProduct?productId=${product.id}"/>">Edit</a>
-					</td>
-					
-								
-					<td><c:forEach items="${product.imgs}" var="img">
-					<img alt="Image not found"
-								src="/online-shop/product-photo?productImgId=${img.id}" width="50" height="50">
-								</c:forEach></td>
+				
 					<td>
 						<form method="post"
 							action="/online-shop/product-photo/upload?productId=${product.id}"

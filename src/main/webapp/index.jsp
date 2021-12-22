@@ -16,7 +16,7 @@
 			<div class="col-md-12">
 				<div class="text-bg">
 					<h1>You're think it's wine?</h1>
-					<a href="<c:url value = "/catalog"/>">Go and check it in catalog :)</a>
+					<a href="<c:url value = "/catalog"/>">Check it :)</a>
 				</div>
 			</div>
 

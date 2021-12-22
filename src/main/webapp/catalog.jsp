@@ -6,42 +6,28 @@
 
 	<div class="container">
 
+		<c:forEach items="${products}" var="product">
+			<div class="card my-2" style="width: 50rem;">
+				<div class="raw my-1">
+					<div class="cell">
+						<img class="card-img-top"
+							src="<c:url value="/product-photo?productImgId=${product.imgs[0].id}"/>"
+							alt="Card image cap">
+					</div>
+				</div>
 
-
-		<div class="card" style="width: 18rem;">
-			<img class="card-img-top" src="..." alt="Card image cap">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">Some quick example text to build on the
-					card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
+				<div class="card-body">
+					<h5 class="card-title">${product.name}</h5>
+					<p class="card-text">Category: ${product.category}</p>
+					<p class="card-text">Price: ${product.price}</p>
+					<a href="<c:url value = "/product/details?pId=${product.id}"/>" class="btn btn-primary">Details</a>
+				</div>
 			</div>
-		</div>
+		</c:forEach>
 
 
 
-		<div class="card" style="width: 18rem;">
-			<img class="card-img-top" src="..." alt="Card image cap">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">Some quick example text to build on the
-					card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-		</div>
 
-
-		<div class="card" style="width: 18rem;">
-			<img class="card-img-top" src="..." alt="Card image cap">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">Some quick example text to build on the
-					card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-		</div>
-
-		
 	</div>
 </div>
 
