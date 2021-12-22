@@ -15,10 +15,8 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.io.IOUtils;
 
-import com.epam.shop.domain.Person;
 import com.epam.shop.domain.ProductPicture;
 import com.epam.shop.repo.ProductPictureRepo;
-import com.epam.shop.service.UserService;
 
 @WebServlet(value = "/product-photo/upload", name = "product_upload")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
@@ -53,7 +51,7 @@ public class ProductPictureUploadUserServlet extends HttpServlet {
 		try (OutputStream os = new FileOutputStream(file)) {
 			IOUtils.copy(filePart.getInputStream(), os);
 		}
-		req.getRequestDispatcher("/listProductsForEdit.jsp").forward(req, resp);
+		resp.sendRedirect("/listSProductsForEdit.jsp");
 	}
 
 }

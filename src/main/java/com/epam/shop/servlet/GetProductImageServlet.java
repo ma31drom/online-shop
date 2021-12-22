@@ -17,7 +17,7 @@ import com.epam.shop.domain.ProductPicture;
 import com.epam.shop.repo.ProductPictureRepo;
 
 @WebServlet(value = "/product-photo", name = "get-image-for-prodcut")
-public class GetProdcutImageServlet extends HttpServlet {
+public class GetProductImageServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
