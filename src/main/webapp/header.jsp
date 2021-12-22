@@ -73,21 +73,21 @@
 									<ul class="navbar-nav mr-auto">
 										<c:if test="${sessionScope.user eq null}">
 											<li class="nav-item"><a class="nav-link"
-												href="/online-shop/registerPage.jsp">Register</a></li>
+												href="<c:url value = "/registerPage.jsp"/>">Register</a></li>
 											<li class="nav-item"><a class="nav-link"
-												href="/online-shop/loginPage.jsp">Login</a></li>
+												href="<c:url value = "/loginPage.jsp"/>">Login</a></li>
 										</c:if>
 										<c:if test="${sessionScope.user ne null}">
 											<li class="nav-item">Hello ${sessionScope.user.login}!</li>
 										</c:if>
 										<c:if test="${sessionScope.user ne null}">
 											<li class="nav-item"><a class="nav-link"
-												href="/online-shop/logout">Logout</a></li>
+												href="<c:url value = "/logout"/>">Logout</a></li>
 										</c:if>
 										<c:if
 											test="${sessionScope.user ne null && PersonRole.ADMIN eq sessionScope.user.role}">
 											<li class="nav-item"><a class="nav-link"
-												href="/online-shop/createProduct.jsp"> Create
+												href=<c:url value = "/createProduct.jsp"/>> Create
 													product</a></li>
 										</c:if>
 									</ul>
