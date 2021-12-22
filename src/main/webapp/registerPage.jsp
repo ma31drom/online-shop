@@ -1,4 +1,4 @@
-<%@include file="header.jsp" %>
+<%@include file="parts/header.jsp" %>
 
 
       <!-- talk -->
@@ -40,4 +40,4 @@
          </div>
       </div>
       <!-- end talk -->
-<%@include file="footer.jsp" %>
+<%@include file="parts/footer.jsp" %>

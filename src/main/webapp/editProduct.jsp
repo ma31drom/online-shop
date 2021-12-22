@@ -1,4 +1,4 @@
-<%@include file="header.jsp"%>
+<%@include file="parts/header.jsp"%>
 <%@ page import="com.epam.shop.domain.Category"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -53,4 +53,4 @@
 
 
 
-<%@include file="footer.jsp"%>
+<%@include file="parts/footer.jsp"%>

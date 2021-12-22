@@ -1,4 +1,4 @@
-<%@include file="header.jsp"%>
+<%@include file="parts/header.jsp"%>
 
 <!-- end header inner -->
 <!-- end header -->
@@ -15,8 +15,8 @@
 			</div>
 			<div class="col-md-12">
 				<div class="text-bg">
-					<h1>Spent the best time with best wine</h1>
-					<a href="#">Read More</a>
+					<h1>You're think it's wine?</h1>
+					<a href="<c:url value = "/catalog"/>">Go and check it in catalog :)</a>
 				</div>
 			</div>
 
@@ -140,4 +140,4 @@
 
 
 
-<%@include file="footer.jsp"%>
+<%@include file="parts/footer.jsp"%>
