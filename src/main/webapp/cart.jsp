@@ -4,41 +4,42 @@
 
 <div id="talk" class="talk">
 	<div class="container">
-		<table>
-			<tr>
-				<th>Id</th>
-				<th>Name</th>
-				<th>Category</th>
-				<th>Price</th>
-				<th>Upload Photo</th>
-
-			</tr>
-			<c:forEach items="${cartProducts}" var="product">
+		<table class="table">
+			<thead class="thead-dark">
 				<tr>
-					<td>${product.product_id}</td>
-					<td>${product.name}</td>
-					<td>${product.category}</td>
-				
-					<td>
-						<form method="post"
-							action="/online-shop/product-photo/upload?productId=${product.id}"
-							enctype="multipart/form-data">
-							<input class="form_contril" type="file" name="file"> <input
-								class="send_btn" type="submit" value="Upload" />
-						</form>
-					</td>
+					<th scope="col">#</th>
+					<th scope="col">Name</th>
+					<th scope="col">Price</th>
+					<th scope="col">Quantity</th>
+					<th scope="col">Summ</th>
 				</tr>
-			</c:forEach>
+			</thead>
+			<tbody>
+				<c:set var="secCount" value="0" scope="page" />
+				<c:set var="total" value="0" scope="page" />
+				<c:forEach items="${productsInCart}" var="item">
+					<tr>
+						<th scope="row">${secCount}</th>
+						<td>${item.name}</td>
+						<td>${item.price}</td>
+						<td>${item.quantity}</td>
+						<td>${item.quantity * item.price}</td>
+						<c:set var="total"
+							value="${total + item.quantity * item.price}" scope="page" />
+					</tr>
+					<c:set var="secCount" value="${secCount + 1}" scope="page" />
+				</c:forEach>
+				<tr>
+					<th scope="row"></th>
+					<td></td>
+					<td></td>
+					<td>Total</td>
+					<td>${total}</td>
+				</tr>
+			</tbody>
 		</table>
 
-		<c:if test="${createdProduct ne null}">
-			<div class="alert alert-success" role="alert">Product created
-				with id ${createdProduct.id}</div>
-		</c:if>
-		<c:if test="${updatedProduct ne null}">
-			<div class="alert alert-success" role="alert">Product updated
-				with id ${createdProduct.id}</div>
-		</c:if>
+
 	</div>
 </div>
 

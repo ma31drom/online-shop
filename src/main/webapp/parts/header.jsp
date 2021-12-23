@@ -55,7 +55,7 @@
 							<div class="full">
 								<div class="center-desk">
 									<div class="logo">
-										<a href="index.html"><img
+										<a href="<c:url value="/"></c:url>"><img
 											src="/online-shop/images/logo.png" alt="#" /></a>
 									</div>
 								</div>

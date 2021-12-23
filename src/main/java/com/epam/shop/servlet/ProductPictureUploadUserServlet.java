@@ -51,7 +51,7 @@ public class ProductPictureUploadUserServlet extends HttpServlet {
 		try (OutputStream os = new FileOutputStream(file)) {
 			IOUtils.copy(filePart.getInputStream(), os);
 		}
-		resp.sendRedirect("/listSProductsForEdit.jsp");
+		resp.sendRedirect(req.getContextPath() + "/list-product");
 	}
 
 }

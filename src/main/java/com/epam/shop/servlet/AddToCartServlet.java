@@ -27,31 +27,34 @@ public class AddToCartServlet extends HttpServlet {
 		Long quantity = Long.valueOf(req.getParameter("quant"));
 
 		Cart attribute = (Cart) req.getSession().getAttribute("cart");
-		
+
 		if (attribute == null) {
-			Cart cart = new Cart();
-			
 			Person person = (Person) req.getSession().getAttribute("user");
-			if (person == null ) {
+
+			if (person == null) {
 				throw new UnauthorizedException();
 			}
-			cart.setPersonId(person.getId());
-			CartRepo.getInstance().save(cart);
-			req.getSession().setAttribute("cart", cart);
-			attribute = cart;
+
+			Cart findByPersonId = CartRepo.getInstance().findByPersonId(person.getId());
+			if (findByPersonId == null) {
+				Cart cart = new Cart();
+				cart.setPersonId(person.getId());
+				CartRepo.getInstance().save(cart);
+			}
+			attribute = findByPersonId;
+			req.getSession().setAttribute("cart", findByPersonId);
 		}
-		
+
 		CartProduct cartPr = new CartProduct();
 		cartPr.setCartId(attribute.getId());
 		cartPr.setProductId(pId);
 		cartPr.setQuantity(quantity);
-		
+
 		CartProductRepo.getInstance().save(cartPr);
-		
+
 		req.getSession().setAttribute("cartProducts", CartProductRepo.getInstance().findByCartId(attribute.getId()));
-		
-		
-		req.getRequestDispatcher("/cart.jsp").forward(req, resp);
+
+		req.getRequestDispatcher("/cart").forward(req, resp);
 	}
 
 }
